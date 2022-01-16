@@ -187,14 +187,14 @@ def checksum(data):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', dest='debug', action='store_true', default=False, help='Debug messages')
-    parser.add_argument('-p', dest='port', nargs=1, metavar='PORT', default='/dev/ttyUSB0', help='Port name to use (/dev/ttyUSB0 by default)')
+    parser.add_argument('-p', dest='port', nargs=1, metavar='PORT', default=['/dev/ttyUSB0'], help='Port name to use (/dev/ttyUSB0 by default)')
     parser.add_argument('-s', dest='slow', action='store_true', default=False, help='Slow (9600 bd) upload')
     parser.add_argument('map_file', nargs='?', default='gmapsupp.img', help='Garmin mapfile to upload (gmapsupp.img by default)')
     return parser.parse_args()
 
 if __name__ == '__main__':
     args = parse_args()
-    port = args.port
+    port = args.port[0]
     map_file = args.map_file
 
     if args.debug:
