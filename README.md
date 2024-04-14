@@ -36,3 +36,21 @@ For a more complete session see `example.sh`. Please note that the script
 requires prior installation of `osmconvert`, `mkgmap` and `splitter`.
 
 You can watch a recorded session at https://asciinema.org/a/YsXvwqaeRfgLFkcHZAQYusbYW.
+
+## Waypoints/tracks transfer
+
+```
+# transfer waypoints from device to PC
+gpsbabel -w -i garmin -f /dev/ttyUSB0 -o gpx -F /tmp/waypoints.gpx
+
+# transfer tracks from device to PC
+gpsbabel -t -i garmin -f /dev/ttyUSB0 -o gpx -F /tmp/tracks.gpx
+
+# show current position (output to stdout)
+gpsbabel -i garmin,get_posn -f /dev/ttyUSB0
+
+# turn off
+gpsbabel -i garmin,power_off -f /dev/ttyUSB0
+```
+
+Further documentation at https://www.gpsbabel.org/htmldoc-development/fmt_garmin.html.
